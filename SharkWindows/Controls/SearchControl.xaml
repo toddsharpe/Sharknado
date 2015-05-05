@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="SharkWindows.Controls.SearchControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Controls="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             Loaded="SearchControl_OnLoaded"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700">
+    <UserControl.Resources>
+        <Style x:Key="GridHeader" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Controls:BusyIndicator x:Name="BusyIndicator">
+            <ContentControl>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Controls:WatermarkTextBox x:Name="SearchTextBox" Watermark="Search" Width="300" Margin="0, 0, 25, 0" />
+                        <Button Content="Search" FontSize="16" Width="75" Click="SearchButton_Click" />
+                    </StackPanel>
+                    
+                    <ListView Grid.Row="1" x:Name="ListView">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="150" DisplayMemberBinding="{Binding Path=SongName}">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Song Name" Style="{StaticResource GridHeader}" />
+                                    </GridViewColumn.Header>
+                                </GridViewColumn>
+                                <GridViewColumn Width="150" DisplayMemberBinding="{Binding Path=AlbumName}">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Album Name" Style="{StaticResource GridHeader}" />
+                                    </GridViewColumn.Header>
+                                </GridViewColumn>
+                                <GridViewColumn Width="150" DisplayMemberBinding="{Binding Path=ArtistName}">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Artist Name" Style="{StaticResource GridHeader}" />
+                                    </GridViewColumn.Header>
+                                </GridViewColumn>
+                                <GridViewColumn Width="60" DisplayMemberBinding="{Binding Path=Duration}">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Length" Style="{StaticResource GridHeader}" />
+                                    </GridViewColumn.Header>
+                                </GridViewColumn>
+                                <GridViewColumn Width="50" DisplayMemberBinding="{Binding Path=TrackNum}">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Track" Style="{StaticResource GridHeader}" />
+                                    </GridViewColumn.Header>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <Button Grid.Row="2" Content="Play Selected" Width="150" Click="PlayButton_OnClick" HorizontalAlignment="Left" />
+                    <Button Grid.Row="2" Content="Download Selected" Width="150" Click="DownloadButton_OnClick" />
+                    <Button Grid.Row="2" Content="View Downloads Folder" Width="150" Click="ViewFolderButton_OnClick" HorizontalAlignment="Right" />
+                </Grid>
+            </ContentControl>
+        </Controls:BusyIndicator>
+    </Grid>
+</UserControl>

@@ -1,0 +1,7 @@
+﻿<apiModels:ApiSong
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:apiModels="clr-namespace:SharkLibrary.ApiModels;assembly=SharkLibrary"
+    SongName="Welcome to the Jungle"
+    AlbumName="Appetite for Destruction"
+    ArtistName="Guns N' Roses">
+</apiModels:ApiSong>

@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="SharkPhone.Controls.MediaControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    Loaded="MediaControl_OnLoaded"
+    d:DesignHeight="800" d:DesignWidth="640">
+    
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel VerticalAlignment="Top">
+            <TextBlock x:Name="SongNameTextBlock" />
+            <TextBlock x:Name="ArtistNameTextBlock" />
+        </StackPanel>
+
+        <Image Grid.Row="1" HorizontalAlignment="Center" x:Name="AlbumArtImage" />
+
+
+        <!-- Progress Bar -->
+        <TextBlock Grid.Row="2" x:Name="PositionTextBlock" HorizontalAlignment="Left" Text="00:00" />
+        <ProgressBar Grid.Row="2" x:Name="ProgressBar" HorizontalAlignment="Stretch" Margin="50, 0, 50, 0" />
+        <TextBlock Grid.Row="2" x:Name="LengthTextBlock" HorizontalAlignment="Right" Text="00:00" />
+
+        <!-- Controls -->
+        <Button Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="0" Click="PreviousButton_OnClick">
+            <Image Source="/Assets/Icons/transport.rew.png" Height="76" />
+        </Button>
+        
+        <Button Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="PlayButton_OnClick" BorderThickness="0">
+            <Image x:Name="PlayImage" Source="/Assets/Icons/transport.pause.png" Height="76" />
+        </Button>
+
+        <Button Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="0" Click="FastForwardButton_OnClick">
+            <Image Source="/Assets/Icons/transport.ff.png" Height="76" />
+        </Button>
+        
+    </Grid>
+</UserControl>

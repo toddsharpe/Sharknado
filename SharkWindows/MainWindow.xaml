@@ -1,0 +1,35 @@
+﻿<Window xmlns:Controls="clr-namespace:SharkWindows.Controls"  x:Class="SharkWindows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Icon="paid_300.ico"
+        Title="Grooveshark Downloader" Height="600" Width="800" Loaded="Window_Loaded" WindowStyle="ThreeDBorderWindow">
+    
+    <Window.Resources>
+        <Style x:Key="TabHeader" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource TabHeader}" Text="Grooveshark Search" />
+                </TabItem.Header>
+                <Controls:SearchControl />
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource TabHeader}" Text="Downloads" />
+                </TabItem.Header>
+                <Controls:DownloadsControl />
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource TabHeader}" Text="Options" />
+                </TabItem.Header>
+                <Controls:OptionsControl />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

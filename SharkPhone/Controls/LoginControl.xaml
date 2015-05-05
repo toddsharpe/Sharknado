@@ -1,0 +1,34 @@
+﻿<controls:BusyUserControl x:Class="SharkPhone.Controls.LoginControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:controls="clr-namespace:SharkPhone.Controls"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot">
+        <StackPanel>
+            <StackPanel x:Name="SignInPanel">
+                <toolkit:PhoneTextBox x:Name="UsernameTextBox" Hint="Username or Email" />
+                <!--<toolkit:PhoneTextBox x:Name="PasswordTextBox" Hint="Password" />-->
+                <PasswordBox x:Name="PasswordBox"/>
+                <Button Background="DarkOrange" Content="Sign in!" Click="LoginButton_OnClick" />
+                <TextBlock x:Name="ErrorTextBlock" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed" Text="Incorrect Username/Password combination" />
+                <!--<Button Content="Sign Up" />-->
+            </StackPanel>
+
+            <StackPanel  x:Name="SignOutPanel" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Logged in as"></TextBlock>
+                    <TextBlock x:Name="NameTextBlock" FontWeight="Bold" Text="Test" Margin="10, 0, 0, 0"></TextBlock>
+                </StackPanel>
+                <Button Content="Sign out" Click="SignOutButton_OnClick" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</controls:BusyUserControl>

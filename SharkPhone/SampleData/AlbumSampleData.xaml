@@ -1,0 +1,11 @@
+﻿<api:Album
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:api="clr-namespace:SharkLibrary.Api;assembly=SharkLibrary"
+    AlbumID="146303"
+    AlbumName="Greatest Hits"
+    ArtistID="401582"
+    CoverArtFilename="1087095.jpg"
+    ArtistName="Guns N' Roses"
+    IsVerified="True">
+    
+</api:Album>

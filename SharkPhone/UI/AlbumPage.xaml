@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="SharkPhone.UI.AlbumPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sharkPhone="clr-namespace:SharkPhone"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignData ../SampleData/AlbumSampleData.xaml}"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <sharkPhone:VersionManager x:Key="VersionManager" />
+    </phone:PhoneApplicationPage.Resources>
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsIndeterminate="true" IsVisible="True" Text="Loading Album..." />
+    </shell:SystemTray.ProgressIndicator>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Path=AppName, Source={StaticResource VersionManager}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <StackPanel>
+                <TextBlock Text="{Binding Path=AlbumName}" Style="{StaticResource PhoneTextTitle1Style}" FontSize="40"/>
+                <TextBlock Text="{Binding Path=ArtistName, StringFormat='Artist: {0}'}" Style="{StaticResource PhoneTextTitle1Style}" FontSize="30" Margin="50, 0, 0, 0"  />
+            </StackPanel>
+
+            <phone:LongListSelector Grid.Row="1" x:Name="SongListSelector" ItemRealized="SongList_OnItemRealized">
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Style="{StaticResource RoundButton}" Padding="0" Margin="0" Click="Button_OnClick" Tag="{Binding}" Height="75" Width="75">
+                                <Button.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="/Assets\Icons\transport.play.png" />
+                                </Button.Background>
+                            </Button>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Path=Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="30" />
+                                <TextBlock Text="{Binding Path=ArtistAlbum}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+        </Grid>
+
+        <Border Grid.Row="2" x:Name="AdBorder" Height = "80" Width = "480" />
+    </Grid>
+
+</phone:PhoneApplicationPage>
